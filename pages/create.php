@@ -1,15 +1,18 @@
 
-    <form action="">
-        <input type="text" name="name" placeholder="Nom de la randonnée">
-        <select name="difficulty" id="difficulty">
-            <option value="très facile">Très facile</option>
-            <option value="facile">Facile</option>
-            <option value="moyen">Moyen</option>
-            <option value="difficile">Difficile</option>
-            <option value="très difficile">Très difficile</option>
+    <form action="?p=create-utils&d=u" method="post">
+        <input type="text" name="name" placeholder="Nom de la randonnée" required>
+
+        <select name="difficulty" id="difficulty" required>
+            <option value="very easy">Très facile</option>
+            <option value="easy">Facile</option>
+            <option value="medium">Moyen</option>
+            <option value="difficult">Difficile</option>
+            <option value="very difficult">Très difficile</option>
         </select>
-        <input type="number" name="distance">
-        <!-- Ajoutez un / des champs pour gérer la donnée de type time à insérer via PHP -->
-        .....
-        <input type="number" name="height_difference">
+
+        <input type="number" name="distance" placeholder="distance en m" min="0" required>
+        <input type="number" name="duration" placeholder="durée en h" min="0" required>
+        <input type="number" name="height_difference" placeholder="dénivelé en m" required>
+
+        <input type="submit">
     </form>
