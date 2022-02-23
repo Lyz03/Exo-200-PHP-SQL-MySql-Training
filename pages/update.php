@@ -25,6 +25,12 @@ if ($stmt->execute()) {
         <input type="number" name="duration" placeholder="durée en h" min="0" required value="<?= $data['duration'] ?>">
         <input type="number" name="height_difference" placeholder="dénivelé en m" required value="<?= $data['height_difference'] ?>">
 
+        <select name="available" id="available">
+            <option value="<?= $data['available'] ?>" selected><?= $data['available'] ?></option>
+            <option value="1">praticable</option>
+            <option value="0">impraticable</option>
+        </select>
+
         <input type="submit" name="submit">
     </form>
 

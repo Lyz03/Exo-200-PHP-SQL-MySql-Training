@@ -14,5 +14,10 @@
         <input type="number" name="duration" placeholder="durée en h" min="0" required>
         <input type="number" name="height_difference" placeholder="dénivelé en m" required>
 
+        <select name="available" id="available">
+            <option value="1">praticable</option>
+            <option value="0">impraticable</option>
+        </select>
+
         <input type="submit">
     </form>

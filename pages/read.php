@@ -24,6 +24,7 @@ if ($stmt->execute()) {
                 <td><?= $value['distance'] ?></td>
                 <td><?= $value['duration'] ?></td>
                 <td><?= $value['height_difference'] ?></td>
+                <td><?= $value['available'] ?></td>
                 <td><a href="?p=delete&id=<?= $value['id']?>">supprimer</td>
             </tr>
         </tbody>

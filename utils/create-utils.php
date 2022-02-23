@@ -4,11 +4,12 @@ $difficulty = trim(strip_tags($_POST['difficulty']));
 $distance = trim(strip_tags($_POST['distance']));
 $duration = trim(strip_tags($_POST['duration']));
 $height_difference = trim(strip_tags($_POST['height_difference']));
+$available = trim(strip_tags($_POST['available']));
 
 try {
     $stmt = $db->prepare("
-    INSERT INTO hiking (name, difficulty, distance, duration, height_difference) 
-    VALUES (:name, :difficulty, :distance, :duration, :height_difference)
+    INSERT INTO hiking (name, difficulty, distance, duration, height_difference, available) 
+    VALUES (:name, :difficulty, :distance, :duration, :height_difference, :available)
     ");
 
     $stmt->bindParam(':name', $name);
@@ -16,6 +17,7 @@ try {
     $stmt->bindParam(':distance', $distance, PDO::PARAM_INT);
     $stmt->bindParam(':duration', $duration, PDO::PARAM_INT);
     $stmt->bindParam(':height_difference', $height_difference, PDO::PARAM_INT);
+    $stmt->bindParam(':available', $available, PDO::PARAM_BOOL);
 
 
     if ($stmt->execute()) {
