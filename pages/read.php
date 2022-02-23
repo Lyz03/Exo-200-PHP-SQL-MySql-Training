@@ -19,7 +19,7 @@ if ($stmt->execute()) {
         
         <tbody>
             <tr>
-                <td><?= $value['name'] ?></td>
+                <td><a href="?p=update&id=<?= $value['id']?>"><?= $value['name'] ?></a></td>
                 <td><?= $value['difficulty'] ?></td>
                 <td><?= $value['distance'] ?></td>
                 <td><?= $value['duration'] ?></td>

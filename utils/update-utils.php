@@ -1,4 +1,9 @@
 <?php
+if (!isset($_POST['submit'])) {
+    header('Location: /index.php');
+}
+
+$id = (int) $_GET['id'];
 $name = trim(strip_tags($_POST['name']));
 $difficulty = trim(strip_tags($_POST['difficulty']));
 $distance = trim(strip_tags($_POST['distance']));
@@ -7,10 +12,15 @@ $height_difference = trim(strip_tags($_POST['height_difference']));
 
 try {
     $stmt = $db->prepare("
-    INSERT INTO hiking (name, difficulty, distance, duration, height_difference) 
-    VALUES (:name, :difficulty, :distance, :duration, :height_difference)
+    UPDATE hiking SET name = :name, 
+                      difficulty = :difficulty, 
+                      distance = :distance, 
+                      duration = :duration, 
+                      height_difference = :height_difference
+    WHERE id = :id
     ");
 
+    $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':difficulty', $difficulty);
     $stmt->bindParam(':distance', $distance, PDO::PARAM_INT);
@@ -19,10 +29,9 @@ try {
 
 
     if ($stmt->execute()) {
-        echo '<div>La randonnée a été ajoutée avec succès.</div>';
+        echo '<div>La randonnée a été modifiée avec succès.</div>';
         echo '<a href="?p=read">Voir les randonnées</a>';
     }
-
 
 } catch (PDOException $e) {
     echo $e;
